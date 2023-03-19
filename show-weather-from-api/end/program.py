@@ -7,20 +7,25 @@ map_city_to_coords = {
     'Accra': "lat=5.6037168&lon=-0.1869644",
 }
 
+
+#Modified show weather to user 
 def show_weather_to_user(weather_data_list):
+    output_str = ""
     for weather_data in weather_data_list:
         hour_number = weather_data['timepoint']
         temperature = weather_data['temp2m']
-        print(f'On hour {hour_number},')
+        output_str += f'On hour {hour_number},\n'
         if hour_number == 24:
-            print('(in one day)')
+            output_str += '(in one day)\n'
         elif hour_number == 48:
-            print('(in two days)')
+            output_str += '(in two days)\n'
         elif hour_number == 72:
-            print('(in three days)')
+            output_str += '(in three days)\n'
 
-        print(f'The temperature is {temperature}')
-
+        output_str += f'The temperature is {temperature}\n'
+        # print(output_str)
+    return output_str.strip()
+    
 def show_weather():
     city_name = input('Please type a city')
     if city_name not in map_city_to_coords:
